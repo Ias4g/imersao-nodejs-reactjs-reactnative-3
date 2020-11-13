@@ -1,0 +1,11 @@
+{
+  "name": "web-site",
+  "version": "1.0.0",
+  "description": "Creating the API with NodeJS. The site with NextJS. And the app with React Native.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Silva, Izael. A.",
+  "license": "MIT"
+}
