@@ -1,5 +1,6 @@
 const express = require('express')
 const mongoose = require('mongoose')
+const cors = require('cors')
 
 require('./models/initial-page')
 require('./models/contacts')
@@ -9,6 +10,13 @@ const Contacts = mongoose.model('Contacts')
 
 const app = express()
 app.use(express.json())
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*")
+    res.header("Access-Control-Allow-Methods", 'GET, PUT, POST, DELETE')
+    res.header("Access-Control-Allow-Headers", 'X-PINGOTHER, Content-Type, Authorization')
+    app.use(cors())
+    next()
+})
 
 const uri = "mongodb+srv://imersao3:imersao3@emunah.7fd8c.mongodb.net/imersao3?retryWrites=true&w=majority"
 
@@ -54,6 +62,20 @@ app.post('/content-home', async (req, res) => {
         return res.json({
             error: false,
             message: 'Cadastro realizado com sucesso'
+        })
+    })
+})
+
+app.get('/contacts', async (req, res) => {
+    await Contacts.findOne({}).then(contacts => {
+        return res.json({
+            error: false,
+            contacts
+        })
+    }).catch(err => {
+        return res.status(400).json({
+            error: true,
+            message: 'Ocorreu um erro ou não há registros cadastrado.'
         })
     })
 })
