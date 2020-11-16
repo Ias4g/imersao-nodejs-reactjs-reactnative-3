@@ -93,6 +93,6 @@ app.post('/contacts', async (req, res) => {
     })
 })
 
-app.listen(3000, () => {
-    console.log('Server running in port 3000 on address http://localhost:3000')
+app.listen(3333, () => {
+    console.log('Server running in port 3000 on address http://localhost:3333')
 })
