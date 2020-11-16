@@ -1,0 +1,27 @@
+.index-top {
+    background-color: #000;
+    color: #fed136;
+    padding: 150px 0;
+    margin: 0 !important;
+}
+
+.index-middle {
+    background: #fff;
+    padding: 80px 0;
+    margin: 0 !important;
+}
+
+.index-middle div.circle {
+    width: 150px;
+    height: 150px;
+    background: #fed136;
+    font-size: 52px;
+    color: #fff;
+}
+
+.index-middle div.centralize {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto !important;
+}
