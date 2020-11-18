@@ -128,7 +128,10 @@ function Contacts() {
                             />
                         </FormGroup>
 
-                        <Button type="submit" outline color="warning">Enviar</Button>
+                        {response.formSave
+                            ? <Button type="submit" outline color="warning" disabled>Enviando...</Button>
+                            : <Button type="submit" outline color="warning">Enviar</Button>
+                        }
                     </Form>
                 </Container>
             </Jumbotron>

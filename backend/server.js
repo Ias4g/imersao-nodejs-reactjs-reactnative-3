@@ -81,6 +81,13 @@ app.get('/contacts', async (req, res) => {
 })
 
 app.post('/contacts', async (req, res) => {
+    function sleep(time) {
+        return new Promise(resolve => {
+            setTimeout(resolve, time)
+        })
+    }
+    await sleep(5000)
+
     await Contacts.create(req.body, (err) => {
         if (err) return res.status(400).json({
             error: true,
