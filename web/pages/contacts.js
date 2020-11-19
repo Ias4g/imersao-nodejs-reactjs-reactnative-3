@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import React, { useState } from 'react'
-import { Container, Form, FormGroup, Jumbotron, Input, Label, Button } from 'reactstrap'
+import { Container, Form, FormGroup, Jumbotron, Input, Label, Button, Spinner } from 'reactstrap'
 
 import Menu from '../components/Menu'
 import Footer from '../components/Footer'
@@ -27,7 +27,7 @@ function Contacts() {
         e.preventDefault()
         setResponse({ formSave: true })
         try {
-            const results = await fetch('http://localhost:3333/contacts', {
+            const results = await fetch('http://192.168.15.16:3333/contacts', {
                 method: 'POST',
                 body: JSON.stringify(formulary),
                 headers: {
@@ -63,8 +63,8 @@ function Contacts() {
             <Head>
                 <title>Contacts - by SILVA, IZAEL. A.</title>
                 <meta name="author" content="SILVA, IZAEL. A." />
-                <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-                <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+                {/* <meta http-equiv="X-UA-Compatible" content="ie=edge" /> */}
+                {/* <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" /> */}
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                 <meta name="keywords" content="Love, Musics, Players, Games, let`s play the game" />
                 <meta name="description" content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." />
@@ -129,8 +129,14 @@ function Contacts() {
                         </FormGroup>
 
                         {response.formSave
-                            ? <Button type="submit" outline color="warning" disabled>Enviando...</Button>
-                            : <Button type="submit" outline color="warning">Enviar</Button>
+                            ?
+                            <Button type="submit" outline color="warning" disabled>
+                                <span>
+                                    <Spinner size="sm" /> enviando
+                                </span>
+                            </Button>
+                            :
+                            <Button type="submit" outline color="warning">Enviar</Button>
                         }
                     </Form>
                 </Container>
